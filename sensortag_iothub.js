@@ -16,13 +16,12 @@ var SensorTag = require('sensortag');
 
 // String containing Hostname, Device Id & Device Key in the following formats:
 //  "HostName=<iothub_host_name>;DeviceId=<device_id>;SharedAccessKey=<device_key>"
-// var connectionString = '[IoT Hub device connection string]';
-var connectionString = 'HostName=tsgdn-iothub1.azure-devices.net;DeviceId=rpi_1;SharedAccessKey=nfbXd2yS7hv3fP1Gw34qHYZBTiNO3EWsbbhmb5ttNps=';
+var connectionString = '[IoT Hub device connection string]';
 
 // fromConnectionString must specify a transport constructor, coming from any transport package.
 var client = Client.fromConnectionString(connectionString, Amqp);
 
-SensorTag.discoverByAddress("B0:B4:48:B8:9E:04", function(tag) {
+SensorTag.discoverByAddress("00:00:00:00:00:01", function(tag) {
     var count = 0;
     tag.on('disconnect', function() {
         console.log('disconnected!');
